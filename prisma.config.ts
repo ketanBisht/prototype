@@ -1,5 +1,5 @@
 import "dotenv/config";
-import { defineConfig, env } from "prisma/config";
+import { defineConfig } from "prisma/config";
 
 export default defineConfig({
   schema: "prisma/schema.prisma",
@@ -7,7 +7,7 @@ export default defineConfig({
     path: "prisma/migrations",
   },
   datasource: {
-    // Use the direct URL for migrations (bypasses PgBouncer)
-    url: env("DIRECT_URL"),
+    // DIRECT_URL for local migrations (bypasses pooler), fallback to DATABASE_URL on Vercel
+    url: process.env.DIRECT_URL ?? process.env.DATABASE_URL ?? "",
   },
 });
