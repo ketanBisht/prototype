@@ -6,7 +6,13 @@ function createClient() {
   if (!connectionString) {
     throw new Error("DATABASE_URL environment variable is not set");
   }
-  const adapter = new PrismaPg({ connectionString });
+  const adapter = new PrismaPg({
+    connectionString,
+    // Required for Supabase — enforces SSL and handles IPv4 pooler connections
+    ssl: process.env.NODE_ENV === "production"
+      ? { rejectUnauthorized: false }
+      : false,
+  });
   return new PrismaClient({ adapter });
 }
 
