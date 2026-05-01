@@ -45,7 +45,8 @@ export async function POST(req: NextRequest) {
       data: { gymId: gym.id, gymName: gym.name, ownerName: gym.ownerName },
     });
   } catch (err) {
-    console.error(err);
-    return NextResponse.json({ error: "Internal server error" }, { status: 500 });
+    const message = err instanceof Error ? err.message : String(err);
+    console.error("[owner/login] Internal error:", message, err);
+    return NextResponse.json({ error: "Internal server error", detail: message }, { status: 500 });
   }
 }
