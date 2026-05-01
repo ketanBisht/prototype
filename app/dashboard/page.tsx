@@ -109,7 +109,7 @@ function MemberIcon({ name, idx }: { name: string; idx: number }) {
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 18 },
   animate: { opacity: 1, y: 0 },
-  transition: { delay, duration: 0.35, ease: "easeOut" },
+  transition: { delay, duration: 0.35, ease: "easeOut" as const },
 });
 
 export default function DashboardPage() {
