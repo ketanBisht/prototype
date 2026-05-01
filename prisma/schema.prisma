@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Gym {
+  id            String         @id @default(cuid())
+  name          String
+  tagline       String?
+  address       String?
+  phone         String?
+  email         String?
+  logoUrl       String?
+  ownerName     String
+  ownerEmail    String         @unique
+  passwordHash  String
+  createdAt     DateTime       @default(now())
+  members       Member[]
+  plans         Plan[]
+  announcements Announcement[]
+}
+
+model Plan {
+  id           String    @id @default(cuid())
+  gymId        String
+  gym          Gym       @relation(fields: [gymId], references: [id])
+  name         String
+  durationDays Int
+  price        Float
+  features     String    @default("[]")
+  isActive     Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  members      Member[]
+  payments     Payment[]
+}
+
+model Member {
+  id           String       @id @default(cuid())
+  gymId        String
+  gym          Gym          @relation(fields: [gymId], references: [id])
+  planId       String?
+  plan         Plan?        @relation(fields: [planId], references: [id])
+  name         String
+  phone        String
+  email        String?
+  photoUrl     String?
+  weight       Float?
+  height       Float?
+  startDate    DateTime
+  endDate      DateTime
+  isActive     Boolean      @default(true)
+  notes        String?
+  passwordHash String
+  payments     Payment[]
+  attendance   Attendance[]
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+}
+
+model Payment {
+  id       String   @id @default(cuid())
+  memberId String
+  member   Member   @relation(fields: [memberId], references: [id])
+  planId   String?
+  plan     Plan?    @relation(fields: [planId], references: [id])
+  amount   Float
+  paidAt   DateTime @default(now())
+  method   String   @default("cash")
+  notes    String?
+}
+
+model Attendance {
+  id       String   @id @default(cuid())
+  memberId String
+  member   Member   @relation(fields: [memberId], references: [id])
+  date     DateTime @default(now())
+}
+
+model Announcement {
+  id        String   @id @default(cuid())
+  gymId     String
+  gym       Gym      @relation(fields: [gymId], references: [id])
+  title     String
+  body      String
+  createdAt DateTime @default(now())
+}
