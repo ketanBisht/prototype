@@ -182,7 +182,8 @@ export default function DashboardPage() {
               return (
                 <div key={m.id} style={{
                   display: "flex", alignItems: "center", justifyContent: "space-between",
-                  padding: "0.75rem", borderRadius: "12px", background: "#f8fafc"
+                  padding: "0.75rem", borderRadius: "12px", background: "#f8fafc",
+                  flexWrap: "wrap", gap: "0.5rem"
                 }}>
                   <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
                     <MemberIcon name={m.name || m.member.name} idx={idx} />

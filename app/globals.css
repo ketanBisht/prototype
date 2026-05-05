@@ -595,7 +595,32 @@ tbody tr:hover td { background: var(--bg-outer); }
   opacity: 0.6;
 }
 
-/* ── Progress Ring ────────────────────────────────────────────────────── */
+/* ── Dashboard / Member Headers ── */
+.dash-header {
+  height: 64px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+.dash-header-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.dash-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+
+/* ── Progress Ring ── */
 .progress-ring { transform: rotate(-90deg); }
 
 /* ── Polaroid (legacy) ────────────────────────────────────────────────── */
@@ -750,6 +775,8 @@ tbody tr:hover td { background: var(--bg-outer); }
   .text-lg-mobile { font-size: 1.125rem !important; }
   .text-sm-mobile { font-size: 0.75rem !important; }
   .p-mobile-4 { padding: 1rem !important; }
+  .w-full-mobile { width: 100% !important; flex: 1 1 100% !important; }
+  .dash-header { padding: 0 1rem !important; height: 60px !important; }
 
   /* Owner dashboard sidebar — hide, use bottom nav */
   .dashboard-sidebar-desktop { display: none !important; }

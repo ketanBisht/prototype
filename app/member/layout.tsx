@@ -90,11 +90,12 @@ export default function MemberLayout({ children }: { children: React.ReactNode }
             </button>
             <div className="user-chip">
               <div className="user-avatar">M</div>
-              Member
-              <ChevronDown size={13} style={{ color: "var(--text-muted)" }} />
+              <span className="desktop-only">Member</span>
+              <ChevronDown size={13} className="desktop-only" style={{ color: "var(--text-muted)" }} />
             </div>
             <button
               onClick={handleLogout}
+              className="desktop-only"
               style={{
                 display: "flex", alignItems: "center", gap: "0.4rem",
                 padding: "0.4rem 0.85rem", borderRadius: 99,
@@ -103,8 +104,6 @@ export default function MemberLayout({ children }: { children: React.ReactNode }
                 fontSize: "0.78rem", fontWeight: 700, cursor: "pointer",
                 transition: "all 0.15s",
               }}
-              onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(239,68,68,0.15)"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(239,68,68,0.07)"; }}
             >
               <LogOut size={13} /> Logout
             </button>

@@ -66,8 +66,8 @@ export default function MemberHomePage() {
         <div style={{ position: "absolute", right: -60, top: -60, width: 220, height: 220, borderRadius: "50%", border: "1.5px solid rgba(255,255,255,0.05)" }} />
         <div style={{ position: "absolute", right: -20, top: -20, width: 140, height: 140, borderRadius: "50%", border: "1.5px solid rgba(200,169,110,0.12)" }} />
 
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", position: "relative", zIndex: 2, flexWrap: "wrap", gap: "1rem" }}>
-          <div>
+        <div className="flex-row-desktop" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", position: "relative", zIndex: 2, flexWrap: "wrap", gap: "1rem" }}>
+          <div style={{ flex: "1 1 100%" }} className="w-full-mobile">
             <span style={{
               display: "inline-block", fontSize: "0.65rem", fontWeight: 800, letterSpacing: "0.1em",
               textTransform: "uppercase", padding: "0.25rem 0.75rem", borderRadius: 999,
@@ -84,7 +84,7 @@ export default function MemberHomePage() {
           </div>
 
           {/* Progress bar pill */}
-          <div style={{ background: "rgba(255,255,255,0.07)", borderRadius: 16, padding: "1rem 1.25rem", minWidth: 180 }}>
+          <div style={{ background: "rgba(255,255,255,0.07)", borderRadius: 16, padding: "1rem 1.25rem", minWidth: 200, flex: "1 1 200px" }}>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "0.5rem" }}>
               <span style={{ fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "rgba(255,255,255,0.4)" }}>Plan Progress</span>
               <span style={{ fontSize: "1.1rem", fontWeight: 900, color: statusColor }}>{profile.daysRemaining}d</span>

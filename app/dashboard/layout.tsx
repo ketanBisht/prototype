@@ -148,22 +148,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <Bell size={15} />
             </button>
             {/* User chip + Logout */}
-            <div style={{
-              display: "flex", alignItems: "center", gap: "0.5rem",
-              background: "#F5F5F5", borderRadius: 99, padding: "0.35rem 0.75rem 0.35rem 0.35rem",
-            }}>
-              <div style={{
-                width: 28, height: 28, borderRadius: "50%",
-                background: "#C8A96E", color: "#1A1A2E",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                fontSize: "0.68rem", fontWeight: 800,
-              }}>OP</div>
-              <span style={{ fontSize: "0.83rem", fontWeight: 600, color: "#1A1A1A" }}>Owner</span>
-              <ChevronDown size={13} color="#999" />
+            <div className="user-chip">
+              <div className="user-avatar">OP</div>
+              <span className="desktop-only">Owner</span>
+              <ChevronDown size={13} className="desktop-only" style={{ color: "#999" }} />
             </div>
             <button
               onClick={handleLogout}
-              title="Logout"
+              className="desktop-only"
               style={{
                 display: "flex", alignItems: "center", gap: "0.4rem",
                 padding: "0.4rem 0.85rem", borderRadius: 99,
@@ -172,8 +164,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 fontSize: "0.78rem", fontWeight: 700, cursor: "pointer",
                 transition: "all 0.15s",
               }}
-              onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(239,68,68,0.15)"; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(239,68,68,0.07)"; }}
             >
               <LogOut size={13} /> Logout
             </button>
