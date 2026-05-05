@@ -2,18 +2,18 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { Dumbbell, Home, CalendarCheck, CreditCard, LogOut, ChevronDown, Bell, Search } from "lucide-react";
+import { Dumbbell, Home, Megaphone, CreditCard, LogOut, ChevronDown, Bell, Search } from "lucide-react";
 
 const navItems = [
-  { href: "/member",            label: "My Membership", icon: Home },
-  { href: "/member/attendance", label: "Attendance",    icon: CalendarCheck },
-  { href: "/member/payments",   label: "Payments",      icon: CreditCard },
+  { href: "/member",               label: "My Membership",  icon: Home },
+  { href: "/member/announcements", label: "Announcements",  icon: Megaphone },
+  { href: "/member/payments",      label: "Payments",       icon: CreditCard },
 ];
 
 const PAGE_TITLES: Record<string, string> = {
-  "/member":            "My Membership",
-  "/member/attendance": "Attendance",
-  "/member/payments":   "Payments",
+  "/member":               "My Membership",
+  "/member/announcements": "Announcements",
+  "/member/payments":      "Payments",
 };
 
 export default function MemberLayout({ children }: { children: React.ReactNode }) {
@@ -60,7 +60,15 @@ export default function MemberLayout({ children }: { children: React.ReactNode }
           <button
             onClick={handleLogout}
             className="sidebar-nav-item"
-            style={{ background: "none", cursor: "pointer" }}
+            style={{
+              background: "rgba(239,68,68,0.12)",
+              color: "#ef4444",
+              border: "none",
+              cursor: "pointer",
+              transition: "background 0.15s, color 0.15s",
+            }}
+            onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(239,68,68,0.25)"; (e.currentTarget as HTMLButtonElement).style.color = "#fca5a5"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(239,68,68,0.12)"; (e.currentTarget as HTMLButtonElement).style.color = "#ef4444"; }}
             title="Logout"
           >
             <LogOut size={19} />
@@ -85,6 +93,21 @@ export default function MemberLayout({ children }: { children: React.ReactNode }
               Member
               <ChevronDown size={13} style={{ color: "var(--text-muted)" }} />
             </div>
+            <button
+              onClick={handleLogout}
+              style={{
+                display: "flex", alignItems: "center", gap: "0.4rem",
+                padding: "0.4rem 0.85rem", borderRadius: 99,
+                border: "1px solid rgba(239,68,68,0.3)",
+                background: "rgba(239,68,68,0.07)", color: "#ef4444",
+                fontSize: "0.78rem", fontWeight: 700, cursor: "pointer",
+                transition: "all 0.15s",
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(239,68,68,0.15)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(239,68,68,0.07)"; }}
+            >
+              <LogOut size={13} /> Logout
+            </button>
           </div>
         </header>
 

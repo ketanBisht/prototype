@@ -4,26 +4,26 @@ import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
-  Dumbbell, LayoutDashboard, Users, CalendarCheck,
+  Dumbbell, LayoutDashboard, Users, BarChart3,
   CreditCard, Package, Settings, LogOut, Search, Bell, ChevronDown,
   Contact, Send,
 } from "lucide-react";
 
 const NAV = [
-  { href: "/dashboard",            icon: LayoutDashboard, label: "Overview"   },
-  { href: "/dashboard/members",    icon: Users,           label: "Members"    },
-  { href: "/dashboard/attendance", icon: CalendarCheck,   label: "Attendance" },
-  { href: "/dashboard/billing",    icon: CreditCard,      label: "Billing"    },
-  { href: "/dashboard/plans",      icon: Package,         label: "Plans"      },
-  { href: "/dashboard/trainers",   icon: Contact,         label: "Trainers"   },
-  { href: "/dashboard/broadcasts", icon: Send,            label: "Broadcasts" },
-  { href: "/dashboard/settings",   icon: Settings,        label: "Settings"   },
+  { href: "/dashboard",           icon: LayoutDashboard, label: "Overview"   },
+  { href: "/dashboard/members",   icon: Users,           label: "Members"    },
+  { href: "/dashboard/analytics", icon: BarChart3,       label: "Analytics"  },
+  { href: "/dashboard/billing",   icon: CreditCard,      label: "Billing"    },
+  { href: "/dashboard/plans",     icon: Package,         label: "Plans"      },
+  { href: "/dashboard/trainers",  icon: Contact,         label: "Trainers"   },
+  { href: "/dashboard/broadcasts",icon: Send,            label: "Broadcasts" },
+  { href: "/dashboard/settings",  icon: Settings,        label: "Settings"   },
 ];
 
 const PAGE_TITLES: Record<string, string> = {
   "/dashboard":            "Overview",
   "/dashboard/members":    "Members",
-  "/dashboard/attendance": "Attendance",
+  "/dashboard/analytics":  "Analytics",
   "/dashboard/billing":    "Billing",
   "/dashboard/plans":      "Plans",
   "/dashboard/trainers":   "Trainers",
@@ -110,11 +110,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <button onClick={handleLogout} title="Logout" style={{
           width: 44, height: 44, borderRadius: 12, border: "none", cursor: "pointer",
           display: "flex", alignItems: "center", justifyContent: "center",
-          background: "transparent", color: "rgba(255,255,255,0.3)",
+          background: "rgba(239,68,68,0.1)", color: "#ef4444",
           transition: "all 0.18s",
+          marginBottom: "0.25rem",
         }}
-          onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.07)"; (e.currentTarget as HTMLButtonElement).style.color = "#fff"; }}
-          onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = "transparent"; (e.currentTarget as HTMLButtonElement).style.color = "rgba(255,255,255,0.3)"; }}
+          onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(239,68,68,0.25)"; (e.currentTarget as HTMLButtonElement).style.color = "#fca5a5"; }}
+          onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(239,68,68,0.1)"; (e.currentTarget as HTMLButtonElement).style.color = "#ef4444"; }}
         >
           <LogOut size={18} />
         </button>
@@ -141,11 +142,10 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
             <button style={{ width: 36, height: 36, borderRadius: 10, border: "1px solid #EBEBEB", background: "#fff", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", color: "#888" }}>
               <Bell size={15} />
             </button>
-            {/* User chip */}
+            {/* User chip + Logout */}
             <div style={{
               display: "flex", alignItems: "center", gap: "0.5rem",
               background: "#F5F5F5", borderRadius: 99, padding: "0.35rem 0.75rem 0.35rem 0.35rem",
-              cursor: "pointer",
             }}>
               <div style={{
                 width: 28, height: 28, borderRadius: "50%",
@@ -156,6 +156,22 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <span style={{ fontSize: "0.83rem", fontWeight: 600, color: "#1A1A1A" }}>Owner</span>
               <ChevronDown size={13} color="#999" />
             </div>
+            <button
+              onClick={handleLogout}
+              title="Logout"
+              style={{
+                display: "flex", alignItems: "center", gap: "0.4rem",
+                padding: "0.4rem 0.85rem", borderRadius: 99,
+                border: "1px solid rgba(239,68,68,0.3)",
+                background: "rgba(239,68,68,0.07)", color: "#ef4444",
+                fontSize: "0.78rem", fontWeight: 700, cursor: "pointer",
+                transition: "all 0.15s",
+              }}
+              onMouseEnter={e => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(239,68,68,0.15)"; }}
+              onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(239,68,68,0.07)"; }}
+            >
+              <LogOut size={13} /> Logout
+            </button>
           </div>
         </header>
 
