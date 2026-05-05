@@ -124,7 +124,7 @@ export function DonutChart({ segments }: { segments: { label: string, value: num
   const center = 50;
 
   return (
-    <div style={{ display: "flex", alignItems: "center", gap: "2rem" }}>
+    <div style={{ display: "flex", alignItems: "center", gap: "2rem", flexWrap: "wrap", justifyContent: "center" }}>
       <div style={{ width: "120px", height: "120px" }}>
         <svg viewBox="0 0 100 100">
           {segments.map((s, i) => {

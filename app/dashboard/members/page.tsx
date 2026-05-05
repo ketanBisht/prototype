@@ -79,7 +79,7 @@ function AddMemberModal({ plans, onClose, onAdded }: { plans: Plan[]; onClose: (
           <button onClick={onClose} className="icon-btn"><X size={15} /></button>
         </div>
         <form onSubmit={handleSubmit} style={{ display: "grid", gap: "1rem" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+          <div className="grid-cols-2">
             <div className="form-group"><label className="label">Full Name *</label>
               <input className="input" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} required />
             </div>
@@ -96,7 +96,7 @@ function AddMemberModal({ plans, onClose, onAdded }: { plans: Plan[]; onClose: (
               {plans.map(p => <option key={p.id} value={p.id}>{p.name} — ₹{p.price} / {p.durationDays}d</option>)}
             </select>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+          <div className="grid-cols-2">
             <div className="form-group"><label className="label">Start Date *</label>
               <input className="input" type="date" value={form.startDate}
                 onChange={e => { setForm(f => ({ ...f, startDate: e.target.value })); updatePlanDates(form.planId, e.target.value); }} required />
@@ -196,7 +196,7 @@ function MembersContent() {
       </div>
 
       {/* ── Filters + Actions bar ── */}
-      <div style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
+      <div style={{ display: "flex", alignItems: "center", gap: "0.625rem", flexWrap: "wrap" }}>
         <div style={{ position: "relative", flex: 1 }}>
           <Search size={14} style={{ position: "absolute", left: "0.75rem", top: "50%", transform: "translateY(-50%)", color: "var(--text-muted)" }} />
           <input id="member-search" className="input" style={{ paddingLeft: "2.25rem" }}

@@ -58,7 +58,7 @@ export default function PlansPage() {
 
   const PlanForm = ({ onCancel }: { onCancel: () => void }) => (
     <form onSubmit={save} style={{ display: "grid", gap: "1rem" }}>
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+      <div className="grid-cols-2">
         <div className="form-group"><label className="label">Plan Name *</label>
           <input className="input" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} required />
         </div>
@@ -87,7 +87,7 @@ export default function PlansPage() {
     <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem" }} className="animate-fade-in">
 
       {/* ── Header ── */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
         <div>
           <div style={{ fontSize: "0.7rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--text-muted)", marginBottom: "0.2rem" }}>
             Pricing

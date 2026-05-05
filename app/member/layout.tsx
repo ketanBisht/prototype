@@ -115,6 +115,23 @@ export default function MemberLayout({ children }: { children: React.ReactNode }
           {children}
         </main>
       </div>
+
+      {/* ── MOBILE BOTTOM NAV ── */}
+      <nav className="mobile-bottom-nav">
+        {navItems.map(({ href, label, icon: Icon }) => {
+          const active = pathname === href;
+          return (
+            <Link key={href} href={href} className={active ? "active" : ""}>
+              <Icon size={20} />
+              {label.split(" ")[0]}
+            </Link>
+          );
+        })}
+        <button className="logout-btn" onClick={handleLogout}>
+          <LogOut size={20} />
+          Out
+        </button>
+      </nav>
     </div>
   );
 }

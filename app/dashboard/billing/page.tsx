@@ -55,7 +55,7 @@ export default function BillingPage() {
     <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem" }} className="animate-fade-in">
 
       {/* ── Stat cards ── */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0.875rem" }}>
+      <div className="grid-cols-3">
         <div style={{ background: "#E6F4EA", borderRadius: 14, padding: "1rem 1.25rem" }}>
           <div style={{ fontSize: "1.6rem", fontWeight: 900, color: "var(--text-primary)", lineHeight: 1.1 }}>{formatINR(total)}</div>
           <div style={{ fontSize: "0.7rem", color: "var(--text-secondary)", marginTop: "0.2rem", fontWeight: 500 }}>
@@ -82,7 +82,7 @@ export default function BillingPage() {
       {/* ── Outstanding dues ── */}
       {expiring.length > 0 && (
         <div style={{ background: "#fff", border: "1px solid var(--border)", borderRadius: 16, overflow: "hidden" }}>
-          <div style={{ padding: "0.875rem 1.25rem", borderBottom: "1px solid var(--border)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+          <div style={{ padding: "0.875rem 1.25rem", borderBottom: "1px solid var(--border)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
             <div style={{ fontSize: "1rem", fontWeight: 800 }}>
               Outstanding Dues
               <span style={{ fontSize: "0.72rem", fontWeight: 700, color: "#d97706", background: "#fef3c7", borderRadius: 999, padding: "0.15rem 0.5rem", marginLeft: "0.5rem" }}>
@@ -90,6 +90,8 @@ export default function BillingPage() {
               </span>
             </div>
           </div>
+          <div style={{ overflowX: "auto" }}>
+            <div style={{ minWidth: 600 }}>
           {expiring.map((m, idx) => (
             <div key={m.id}
               style={{
@@ -114,12 +116,14 @@ export default function BillingPage() {
               </span>
             </div>
           ))}
+            </div>
+          </div>
         </div>
       )}
 
       {/* ── Payment History ── */}
       <div style={{ background: "#fff", border: "1px solid var(--border)", borderRadius: 16, overflow: "hidden" }}>
-        <div style={{ padding: "0.875rem 1.25rem", borderBottom: "1px solid var(--border)", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <div style={{ padding: "0.875rem 1.25rem", borderBottom: "1px solid var(--border)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
           <div style={{ fontSize: "1rem", fontWeight: 800 }}>Payment History</div>
           <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
             <input className="input" type="month" value={month} onChange={e => setMonth(e.target.value)}
@@ -135,6 +139,8 @@ export default function BillingPage() {
           </div>
         </div>
 
+        <div style={{ overflowX: "auto" }}>
+          <div style={{ minWidth: 800 }}>
         {/* Column headers */}
         <div style={{
           display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr 1fr 32px",
@@ -188,6 +194,8 @@ export default function BillingPage() {
             </div>
           );
         })}
+          </div>
+        </div>
       </div>
       <style>{`@keyframes spin{to{transform:rotate(360deg);}}`}</style>
     </div>

@@ -56,8 +56,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       fontFamily: "var(--font-body)",
     }}>
 
-      {/* ── SIDEBAR (narrow dark pill) ── */}
-      <aside className="dashboard-sidebar" style={{
+      {/* ── SIDEBAR (narrow dark pill — hidden on mobile) ── */}
+      <aside className="dashboard-sidebar dashboard-sidebar-desktop" style={{
         width: 64,
         background: "#1C1C1E",
         borderRadius: "0",
@@ -187,6 +187,23 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           {children}
         </motion.main>
       </div>
+
+      {/* ── MOBILE BOTTOM NAV ── */}
+      <nav className="mobile-bottom-nav">
+        {NAV.slice(0, 5).map(({ href, icon: Icon, label }) => {
+          const active = pathname === href || (href !== "/dashboard" && pathname.startsWith(href));
+          return (
+            <Link key={href} href={href} className={active ? "active" : ""}>
+              <Icon size={20} />
+              {label.length > 7 ? label.slice(0, 7) : label}
+            </Link>
+          );
+        })}
+        <button className="logout-btn" onClick={handleLogout}>
+          <LogOut size={20} />
+          Out
+        </button>
+      </nav>
     </div>
   );
 }

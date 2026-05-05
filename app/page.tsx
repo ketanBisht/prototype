@@ -69,7 +69,7 @@ export default function LandingPage() {
           </div>
           <span style={{ fontWeight: 800, fontSize: "0.9rem", color: "#fff", letterSpacing: "0.1em", textTransform: "uppercase" }}>Iron Paradise</span>
         </Link>
-        <div style={{ display: "flex", gap: "2rem" }}>
+        <div className="landing-nav-links">
           {["Plans", "About", "Contact"].map(item => (
             <a key={item} href={`#${item.toLowerCase()}`} style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none", fontSize: "0.83rem", fontWeight: 500, transition: "color 0.2s" }}
               onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
@@ -78,7 +78,7 @@ export default function LandingPage() {
             </a>
           ))}
         </div>
-        <div style={{ display: "flex", gap: "0.5rem" }}>
+        <div className="landing-nav-actions">
           <Link href="/login?role=member" style={{
             fontSize: "0.8rem", fontWeight: 600, padding: "0.4rem 0.875rem",
             border: "1px solid rgba(255,255,255,0.15)", borderRadius: 999,
@@ -102,7 +102,7 @@ export default function LandingPage() {
 
       {/* ── HERO ── */}
       <section style={{ paddingTop: 60, minHeight: "100vh", display: "flex", alignItems: "center", background: "#fff" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "4rem 2rem", width: "100%", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "center" }}>
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "4rem 1.25rem", width: "100%" }} className="landing-hero-grid">
 
           {/* Left text */}
           <div className="animate-fade-in">
@@ -158,7 +158,7 @@ export default function LandingPage() {
           </div>
 
           {/* Right: feature cards bento */}
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.875rem" }} className="animate-fade-in">
+          <div className="landing-features-grid animate-fade-in">
             {features.map((f, i) => (
               <div key={f.title} style={{
                 background: f.bg, borderRadius: 16, padding: "1.5rem",
@@ -263,7 +263,7 @@ export default function LandingPage() {
             <div style={{ fontSize: "0.68rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--gold-dark)", marginBottom: "0.75rem" }}>Real Results</div>
             <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 900 }}>Stories that inspire</h2>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
+          <div className="landing-testimonials-grid">
             {testimonials.map((t, i) => (
               <div key={t.name} style={{
                 background: i === 1 ? "var(--sidebar-bg)" : "var(--bg-outer)",

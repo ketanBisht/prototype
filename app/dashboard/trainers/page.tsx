@@ -89,7 +89,8 @@ export default function TrainersPage() {
     <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem", maxWidth: 900 }} className="animate-fade-in">
       {modalTrainer && <TrainerModal trainer={modalTrainer === "new" ? null : modalTrainer} onClose={() => setModalTrainer(null)} onSaved={load} />}
 
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      {/* ── Header ── */}
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "1rem" }}>
         <div>
           <h2 style={{ fontSize: "1.2rem", fontWeight: 800 }}>Manage Trainers</h2>
           <p style={{ fontSize: "0.875rem", color: "var(--text-muted)" }}>Add and organize your gym staff.</p>
