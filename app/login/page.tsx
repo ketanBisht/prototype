@@ -42,10 +42,10 @@ function LoginForm() {
   };
 
   return (
-    <div className="login-layout" style={{ background: "var(--bg-outer)" }}>
+    <div className="login-layout" style={{ minHeight: "100vh", display: "grid", gridTemplateColumns: "1fr 1fr", background: "var(--bg-outer)" }}>
 
       {/* LEFT: Dark brand panel (hidden on small screens) */}
-      <div className="login-brand-panel">
+      <div className="login-brand-panel" style={{ background: "var(--sidebar-bg)", display: "flex", flexDirection: "column", padding: "2.5rem", justifyContent: "space-between" }}>
         <Link href="/" style={{ display: "flex", alignItems: "center", gap: "0.625rem", textDecoration: "none" }}>
           <div style={{ width: 36, height: 36, background: "var(--gold)", borderRadius: 10, display: "flex", alignItems: "center", justifyContent: "center" }}>
             <Dumbbell size={18} color="#1A1A2E" />

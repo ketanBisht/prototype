@@ -58,7 +58,7 @@ export default function PlansPage() {
 
   const PlanForm = ({ onCancel }: { onCancel: () => void }) => (
     <form onSubmit={save} style={{ display: "grid", gap: "1rem" }}>
-      <div className="grid-cols-2">
+      <div className="grid-cols-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
         <div className="form-group"><label className="label">Plan Name *</label>
           <input className="input" value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))} required />
         </div>

@@ -139,7 +139,7 @@ export default function AnalyticsPage() {
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }} className="animate-fade-in">
 
       {/* ── Hero KPIs ── */}
-      <div className="grid-cols-4">
+      <div className="grid-cols-4" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "1rem" }}>
         <KPI label="Active Members"      value={String(activeCount)}         sub={`${retentionRate}% retention`} icon={Users}        color="#6366f1" bg="#EEF2FF" />
         <KPI label="Monthly Revenue"     value={formatINR(data.monthlyRevenue)} sub="this month"               icon={CreditCard}   color="#10b981" bg="#D1FAE5" />
         <KPI label="Avg. Rev / Member"   value={formatINR(avgRevPerMember)}  sub="per active"                   icon={TrendingUp}   color="#f59e0b" bg="#FEF3C7" />
@@ -147,7 +147,7 @@ export default function AnalyticsPage() {
       </div>
 
       {/* ── Row 2: Sign-up trend + Plan mix ── */}
-      <div className="grid-cols-dashboard-mid">
+      <div className="grid-cols-dashboard-mid" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: "1.5rem" }}>
 
         {/* Sign-up trend */}
         <div style={{ background: "#fff", border: "1px solid var(--border)", borderRadius: 20, padding: "1.5rem" }}>
@@ -194,7 +194,7 @@ export default function AnalyticsPage() {
       </div>
 
       {/* ── Row 3: Membership health + Payment methods ── */}
-      <div className="grid-cols-dashboard-mid">
+      <div className="grid-cols-dashboard-mid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem" }}>
 
         {/* Membership health donut */}
         <div style={{ background: "#fff", border: "1px solid var(--border)", borderRadius: 20, padding: "1.5rem" }}>

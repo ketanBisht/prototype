@@ -99,7 +99,7 @@ export default function MemberHomePage() {
         </div>
 
         {/* Stat chips */}
-        <div className="grid-cols-member-mid" style={{ position: "relative", zIndex: 2 }}>
+        <div className="grid-cols-member-mid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "1.25rem", position: "relative", zIndex: 2 }}>
           {[
             { label: "Start Date", value: formatDate(profile.startDate) },
             { label: "Expires", value: formatDate(profile.endDate) },
@@ -114,7 +114,7 @@ export default function MemberHomePage() {
       </div>
 
       {/* ── MIDDLE: Vitals + Payments + Hours ── */}
-      <div className="grid-cols-member-mid">
+      <div className="grid-cols-member-mid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "1.25rem" }}>
 
         {/* Body Vitals */}
         <div style={{ background: "#fff", border: "1px solid var(--border)", borderRadius: "var(--radius-card)", padding: "1.5rem", display: "flex", flexDirection: "column" }}>
@@ -124,7 +124,7 @@ export default function MemberHomePage() {
           </div>
           {profile.weight && profile.height ? (
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem", flex: 1 }}>
-              <div className="grid-cols-2">
+              <div className="grid-cols-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
                 <div style={{ background: "var(--bg-outer)", padding: "0.75rem", borderRadius: 12, textAlign: "center" }}>
                   <div style={{ fontSize: "1.25rem", fontWeight: 900, color: "var(--text-primary)" }}>{profile.weight}<span style={{ fontSize: "0.7rem", fontWeight: 600, color: "var(--text-muted)" }}>kg</span></div>
                   <div style={{ fontSize: "0.65rem", fontWeight: 700, color: "var(--text-secondary)", textTransform: "uppercase", letterSpacing: "0.05em" }}>Weight</div>

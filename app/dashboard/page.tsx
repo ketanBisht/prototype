@@ -80,7 +80,7 @@ export default function DashboardPage() {
     <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
       
       {/* ═══ Top KPI Row ═══ */}
-      <div className="grid-cols-4">
+      <div className="grid-cols-4" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "1rem" }}>
         <KPICard 
           label="Total Revenue" value={formatINR(data.monthlyRevenue * 12)} 
           change="+12.5%" trend="up" icon={CreditCard} color="#6366f1" delay={0}
@@ -100,7 +100,7 @@ export default function DashboardPage() {
       </div>
 
       {/* ═══ Main Analytics Grid ═══ */}
-      <div className="grid-cols-dashboard-mid">
+      <div className="grid-cols-dashboard-mid" style={{ display: "grid", gridTemplateColumns: "1.2fr 1fr", gap: "1.5rem" }}>
         
         {/* Revenue Trends Chart */}
         <motion.div
@@ -156,7 +156,7 @@ export default function DashboardPage() {
       </div>
 
       {/* ═══ Bottom Row: Recent Activity & Renewals ═══ */}
-      <div className="grid-cols-dashboard-top">
+      <div className="grid-cols-dashboard-top" style={{ display: "grid", gridTemplateColumns: "1fr 285px", gap: "1.5rem" }}>
         
         {/* Market-style table (Simplified) */}
         <motion.div 

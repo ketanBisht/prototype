@@ -102,7 +102,7 @@ export default function LandingPage() {
 
       {/* ── HERO ── */}
       <section style={{ paddingTop: 60, minHeight: "100vh", display: "flex", alignItems: "center", background: "#fff" }}>
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "4rem 1.25rem", width: "100%" }} className="landing-hero-grid">
+        <div className="landing-hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "center", maxWidth: 1200, margin: "0 auto", padding: "4rem 1.25rem", width: "100%" }}>
 
           {/* Left text */}
           <div className="animate-fade-in">
@@ -158,7 +158,7 @@ export default function LandingPage() {
           </div>
 
           {/* Right: feature cards bento */}
-          <div className="landing-features-grid animate-fade-in">
+          <div className="landing-features-grid animate-fade-in" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.875rem" }}>
             {features.map((f, i) => (
               <div key={f.title} style={{
                 background: f.bg, borderRadius: 16, padding: "1.5rem",
@@ -263,7 +263,7 @@ export default function LandingPage() {
             <div style={{ fontSize: "0.68rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--gold-dark)", marginBottom: "0.75rem" }}>Real Results</div>
             <h2 style={{ fontSize: "clamp(2rem, 4vw, 3rem)", fontWeight: 900 }}>Stories that inspire</h2>
           </div>
-          <div className="landing-testimonials-grid">
+          <div className="landing-testimonials-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "1rem" }}>
             {testimonials.map((t, i) => (
               <div key={t.name} style={{
                 background: i === 1 ? "var(--sidebar-bg)" : "var(--bg-outer)",

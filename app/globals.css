@@ -1,6 +1,5 @@
 /* ── Google Fonts ─────────────────────────────────────────────────────── */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap");
-
 @import "tailwindcss";
 
 /* ── Design Tokens ────────────────────────────────────────────────────── */
@@ -714,7 +713,7 @@ tbody tr:hover td { background: var(--bg-outer); }
 
 @media (max-width: 900px) {
   .login-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
   .login-brand-panel {
     display: none !important;
@@ -723,13 +722,13 @@ tbody tr:hover td { background: var(--bg-outer); }
 
 /* ── Breakpoints ──────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .grid-cols-4            { grid-template-columns: repeat(2, 1fr); }
-  .grid-cols-dashboard-top{ grid-template-columns: 1fr; }
-  .grid-cols-dashboard-mid{ grid-template-columns: 1fr; }
-  .grid-cols-member-mid   { grid-template-columns: 1fr 1fr; }
-  .grid-cols-member-bot   { grid-template-columns: 1fr; }
-  .landing-hero-grid      { grid-template-columns: 1fr; gap: 2.5rem; }
-  .landing-testimonials-grid { grid-template-columns: 1fr; }
+  .grid-cols-4            { grid-template-columns: repeat(2, 1fr) !important; }
+  .grid-cols-dashboard-top{ grid-template-columns: 1fr !important; }
+  .grid-cols-dashboard-mid{ grid-template-columns: 1fr !important; }
+  .grid-cols-member-mid   { grid-template-columns: 1fr 1fr !important; }
+  .grid-cols-member-bot   { grid-template-columns: 1fr !important; }
+  .landing-hero-grid      { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+  .landing-testimonials-grid { grid-template-columns: 1fr !important; }
 }
 
 @media (max-width: 768px) {
@@ -737,10 +736,10 @@ tbody tr:hover td { background: var(--bg-outer); }
   .grid-cols-2,
   .grid-cols-3,
   .grid-cols-4,
-  .grid-cols-member-mid     { grid-template-columns: 1fr; }
-  .flex-row-desktop          { flex-direction: column; }
-  .landing-features-grid     { grid-template-columns: 1fr; }
-  .landing-nav-links         { display: none; }
+  .grid-cols-member-mid     { grid-template-columns: 1fr !important; }
+  .flex-row-desktop          { flex-direction: column !important; }
+  .landing-features-grid     { grid-template-columns: 1fr !important; }
+  .landing-nav-links         { display: none !important; }
 
   /* Owner dashboard sidebar — hide, use bottom nav */
   .dashboard-sidebar-desktop { display: none !important; }
