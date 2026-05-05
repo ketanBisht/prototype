@@ -62,14 +62,14 @@ export default function LandingPage() {
         background: "var(--sidebar-bg)", height: 60,
         display: "flex", alignItems: "center", justifyContent: "space-between",
         padding: "0 2rem",
-      }}>
+      }} className="p-mobile-4">
         <Link href="/" style={{ display: "flex", alignItems: "center", gap: "0.625rem", textDecoration: "none" }}>
           <div style={{ width: 34, height: 34, background: "var(--gold)", borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center" }}>
             <Dumbbell size={17} color="#1A1A2E" />
           </div>
           <span style={{ fontWeight: 800, fontSize: "0.9rem", color: "#fff", letterSpacing: "0.1em", textTransform: "uppercase" }}>Iron Paradise</span>
         </Link>
-        <div className="landing-nav-links">
+        <div className="landing-nav-links desktop-only" style={{ display: "flex", gap: "2.5rem" }}>
           {["Plans", "About", "Contact"].map(item => (
             <a key={item} href={`#${item.toLowerCase()}`} style={{ color: "rgba(255,255,255,0.5)", textDecoration: "none", fontSize: "0.83rem", fontWeight: 500, transition: "color 0.2s" }}
               onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
@@ -95,14 +95,16 @@ export default function LandingPage() {
           }}
             onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.background = "var(--gold-light)")}
             onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.background = "var(--gold)")}>
-            Owner Login
+            {/* Shorten on very small screens */}
+            <span className="desktop-only">Owner Login</span>
+            <span className="mobile-only">Login</span>
           </Link>
         </div>
       </nav>
 
       {/* ── HERO ── */}
       <section style={{ paddingTop: 60, minHeight: "100vh", display: "flex", alignItems: "center", background: "#fff" }}>
-        <div className="landing-hero-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "center", maxWidth: 1200, margin: "0 auto", padding: "4rem 1.25rem", width: "100%" }}>
+        <div className="landing-hero-grid p-mobile-4" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem", alignItems: "center", maxWidth: 1200, margin: "0 auto", padding: "4rem 1.25rem", width: "100%" }}>
 
           {/* Left text */}
           <div className="animate-fade-in">
@@ -123,22 +125,24 @@ export default function LandingPage() {
               State-of-the-art equipment, expert coaching, and a community built for people who refuse to settle.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap", alignItems: "center" }}>
-              <a href="#plans" style={{
+              <a href="#plans" className="btn-mobile-full" style={{
                 display: "inline-flex", alignItems: "center", gap: "0.4rem",
                 background: "var(--text-primary)", color: "#fff",
                 fontWeight: 700, fontSize: "0.875rem", padding: "0.75rem 1.5rem",
                 borderRadius: 999, textDecoration: "none", transition: "all 0.18s",
+                justifyContent: "center",
               }}
                 onMouseEnter={e => ((e.currentTarget as HTMLAnchorElement).style.background = "#2d2d40")}
                 onMouseLeave={e => ((e.currentTarget as HTMLAnchorElement).style.background = "var(--text-primary)")}>
                 View Plans <ArrowUpRight size={15} />
               </a>
-              <a href="#contact" style={{
+              <a href="#contact" className="btn-mobile-full" style={{
                 display: "inline-flex", alignItems: "center", gap: "0.4rem",
                 background: "var(--bg-outer)", color: "var(--text-primary)",
                 fontWeight: 600, fontSize: "0.875rem", padding: "0.75rem 1.5rem",
                 borderRadius: 999, textDecoration: "none", border: "1px solid var(--border)",
                 transition: "all 0.18s",
+                justifyContent: "center",
               }}>
                 Visit Us <ChevronRight size={15} />
               </a>
@@ -290,7 +294,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── CONTACT ── */}
-      <section id="contact" style={{ background: "var(--bg-outer)", borderTop: "1px solid var(--border)", padding: "5rem 2rem" }}>
+      <section id="contact" style={{ background: "var(--bg-outer)", borderTop: "1px solid var(--border)", padding: "5rem 2rem" }} className="p-mobile-4">
         <div style={{ maxWidth: 680, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
             <div style={{ fontSize: "0.68rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.15em", color: "var(--gold-dark)", marginBottom: "0.75rem" }}>Find Us</div>
@@ -316,7 +320,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── FOOTER ── */}
-      <footer style={{ background: "var(--sidebar-bg)", padding: "2rem", textAlign: "center" }}>
+      <footer style={{ background: "var(--sidebar-bg)", padding: "2rem" }} className="p-mobile-4">
         <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem", marginBottom: "0.625rem" }}>
           <div style={{ width: 28, height: 28, background: "var(--gold)", borderRadius: 7, display: "flex", alignItems: "center", justifyContent: "center" }}>
             <Dumbbell size={14} color="#1A1A2E" />
@@ -324,7 +328,7 @@ export default function LandingPage() {
           <span style={{ fontWeight: 800, fontSize: "0.875rem", color: "#fff", letterSpacing: "0.1em", textTransform: "uppercase" }}>Iron Paradise Gym</span>
         </div>
         <p style={{ color: "rgba(255,255,255,0.25)", fontSize: "0.72rem" }}>© 2024 Iron Paradise Gym. Powered by Jacked.</p>
-        <div style={{ marginTop: "1rem", display: "flex", gap: "1.5rem", justifyContent: "center" }}>
+        <div style={{ marginTop: "1rem", display: "flex", gap: "1.5rem", justifyContent: "center", flexWrap: "wrap" }}>
           {[{ href: "#plans", label: "Plans" }, { href: "/login?role=member", label: "Member Login" }, { href: "/login?role=owner", label: "Owner Login" }].map(l => (
             <Link key={l.href} href={l.href} style={{ color: "rgba(255,255,255,0.35)", textDecoration: "none", fontSize: "0.78rem", transition: "color 0.2s" }}
               onMouseEnter={e => (e.currentTarget.style.color = "#fff")}

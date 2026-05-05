@@ -53,14 +53,14 @@ export default function MemberHomePage() {
   const bmiColor = bmi < 18.5 ? "#3b82f6" : bmi < 25 ? "#10b981" : bmi < 30 ? "#f59e0b" : "#ef4444";
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", maxWidth: 1100, margin: "0 auto" }} className="animate-fade-in">
+    <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem", maxWidth: 1100, margin: "0 auto" }} className="animate-fade-in p-mobile-4">
 
       {/* ── TOP: Membership Hero Card ── */}
       <div style={{
         background: profile.status === "expired" ? "#18181F" : "linear-gradient(135deg, #1C1C2E 0%, #2D2D5F 100%)",
-        borderRadius: "var(--radius-card)", padding: "2rem",
-        display: "flex", flexDirection: "column", gap: "1.5rem",
+        borderRadius: "var(--radius-card)",
         position: "relative", overflow: "hidden",
+        padding: "1.5rem", gap: "1rem", display: "flex", flexDirection: "column"
       }}>
         {/* decorative circles */}
         <div style={{ position: "absolute", right: -60, top: -60, width: 220, height: 220, borderRadius: "50%", border: "1.5px solid rgba(255,255,255,0.05)" }} />
@@ -124,7 +124,7 @@ export default function MemberHomePage() {
           </div>
           {profile.weight && profile.height ? (
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem", flex: 1 }}>
-              <div className="grid-cols-2" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.75rem" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "0.75rem" }}>
                 <div style={{ background: "var(--bg-outer)", padding: "0.75rem", borderRadius: 12, textAlign: "center" }}>
                   <div style={{ fontSize: "1.25rem", fontWeight: 900, color: "var(--text-primary)" }}>{profile.weight}<span style={{ fontSize: "0.7rem", fontWeight: 600, color: "var(--text-muted)" }}>kg</span></div>
                   <div style={{ fontSize: "0.65rem", fontWeight: 700, color: "var(--text-secondary)", textTransform: "uppercase", letterSpacing: "0.05em" }}>Weight</div>
@@ -139,7 +139,7 @@ export default function MemberHomePage() {
                   <div style={{ fontSize: "0.65rem", fontWeight: 700, color: "#3b82f6", textTransform: "uppercase", letterSpacing: "0.05em" }}>BMI</div>
                   <div style={{ fontSize: "1.5rem", fontWeight: 900, color: "#1d4ed8", lineHeight: 1 }}>{bmi}</div>
                 </div>
-                <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "#fff", background: bmiColor, padding: "0.25rem 0.7rem", borderRadius: 999 }}>{bmiStatus}</span>
+                <span style={{ fontSize: "0.7rem", fontWeight: 700, color: "#fff", background: bmiColor, padding: "0.25rem 0.6rem", borderRadius: 999, whiteSpace: "nowrap" }}>{bmiStatus}</span>
               </div>
             </div>
           ) : (
@@ -162,11 +162,11 @@ export default function MemberHomePage() {
             <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {profile.payments.map((p) => (
                 <div key={p.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingBottom: "0.75rem", borderBottom: "1px solid var(--bg-outer)" }}>
-                  <div>
-                    <div style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--text-primary)" }}>{formatINR(p.amount)}</div>
-                    <div style={{ fontSize: "0.7rem", color: "var(--text-muted)", marginTop: "0.1rem" }}>{formatDate(p.paidAt)}</div>
-                  </div>
-                  <span style={{ fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", padding: "0.2rem 0.5rem", borderRadius: 6, background: "var(--bg-outer)", color: "var(--text-secondary)" }}>
+                  <div style={{ flex: 1 }}>
+                     <div style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--text-primary)" }}>{formatINR(p.amount)}</div>
+                     <div style={{ fontSize: "0.7rem", color: "var(--text-muted)", marginTop: "0.1rem" }}>{formatDate(p.paidAt)}</div>
+                   </div>
+                   <span style={{ fontSize: "0.65rem", fontWeight: 700, textTransform: "uppercase", padding: "0.2rem 0.5rem", borderRadius: 6, background: "var(--bg-outer)", color: "var(--text-secondary)", flexShrink: 0 }}>
                     {p.method}
                   </span>
                 </div>

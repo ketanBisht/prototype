@@ -134,7 +134,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           padding: "1.25rem 2rem", borderBottom: "1px solid #F0F0F0",
           flexShrink: 0,
         }}>
-          <h1 style={{ fontSize: "1.5rem", fontWeight: 800, color: "#1A1A1A", margin: 0 }}>{pageTitle}</h1>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.875rem" }}>
+            <div className="mobile-only" style={{ width: 32, height: 32, background: "#C8A96E", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center" }}>
+              <Dumbbell size={16} color="#1C1C1E" />
+            </div>
+            <h1 className="dash-header-title" style={{ fontSize: "1.5rem", fontWeight: 800, color: "#1A1A1A", margin: 0 }}>{pageTitle}</h1>
+          </div>
           <div style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
             <button style={{ width: 36, height: 36, borderRadius: 10, border: "1px solid #EBEBEB", background: "#fff", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", color: "#888" }}>
               <Search size={15} />
