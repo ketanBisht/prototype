@@ -188,6 +188,17 @@ exports.Prisma.AnnouncementScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.TrainerScalarFieldEnum = {
+  id: 'id',
+  gymId: 'gymId',
+  name: 'name',
+  phone: 'phone',
+  specialty: 'specialty',
+  salary: 'salary',
+  isActive: 'isActive',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -210,7 +221,8 @@ exports.Prisma.ModelName = {
   Member: 'Member',
   Payment: 'Payment',
   Attendance: 'Attendance',
-  Announcement: 'Announcement'
+  Announcement: 'Announcement',
+  Trainer: 'Trainer'
 };
 
 /**

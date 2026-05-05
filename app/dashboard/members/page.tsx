@@ -129,7 +129,6 @@ function AddMemberModal({ plans, onClose, onAdded }: { plans: Plan[]; onClose: (
           </div>
         </form>
       </div>
-      <style>{`@keyframes spin{to{transform:rotate(360deg);}}`}</style>
     </div>
   );
 }
@@ -183,7 +182,7 @@ function MembersContent() {
       {showModal && <AddMemberModal plans={plans} onClose={() => setShowModal(false)} onAdded={load} />}
 
       {/* ── Stat row ── */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "0.875rem" }}>
+      <div className="grid-cols-3">
         {[
           { label: "Total Members", value: members.length, bg: "#EDE9FF", color: "#7C3AED" },
           { label: "Active", value: members.filter(m => membershipStatus(m.endDate) === "active").length, bg: "#E6F4EA", color: "#059669" },
@@ -220,9 +219,10 @@ function MembersContent() {
       </div>
 
       {/* ── Market-style list ── */}
-      <div style={{ background: "#fff", border: "1px solid var(--border)", borderRadius: 16, overflow: "hidden" }}>
-        {/* Column headers */}
-        <div style={{
+      <div className="table-wrapper" style={{ background: "#fff", border: "1px solid var(--border)", borderRadius: 16, overflowX: "auto" }}>
+        <div style={{ minWidth: 800 }}>
+          {/* Column headers */}
+          <div style={{
           display: "grid", gridTemplateColumns: "2fr 1fr 1fr 1fr 1fr 80px",
           padding: "0.6rem 1.25rem", borderBottom: "1px solid var(--border)",
           background: "var(--bg-outer)",
@@ -285,10 +285,10 @@ function MembersContent() {
                 </button>
               </div>
             </div>
-          );
-        })}
+        );
+      })}
+        </div>
       </div>
-      <style>{`@keyframes spin{to{transform:rotate(360deg);}}`}</style>
     </div>
   );
 }

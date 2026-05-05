@@ -621,3 +621,53 @@ tbody tr:hover td { background: var(--bg-outer); }
   height: 100px;
   overflow: visible;
 }
+
+/* ── Responsive Utility Classes ───────────────────────────────────────── */
+.grid-cols-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.grid-cols-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.grid-cols-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem; }
+.grid-cols-dashboard-top { display: grid; grid-template-columns: 1fr 285px; gap: 1.5rem; }
+.grid-cols-dashboard-mid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.5rem; }
+.grid-cols-member-mid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.25rem; }
+.grid-cols-member-bot { display: grid; grid-template-columns: 1.5fr 1fr; gap: 1.25rem; }
+
+/* Desktop-only flex tweaks */
+.flex-row-desktop { display: flex; flex-direction: row; gap: 1.25rem; }
+
+@media (max-width: 1024px) {
+  .grid-cols-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-cols-dashboard-top { grid-template-columns: 1fr; }
+  .grid-cols-dashboard-mid { grid-template-columns: 1fr; }
+  .grid-cols-member-mid { grid-template-columns: 1fr 1fr; }
+  .grid-cols-member-bot { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .grid-cols-2, .grid-cols-3, .grid-cols-4, .grid-cols-member-mid { grid-template-columns: 1fr; }
+  .flex-row-desktop { flex-direction: column; }
+  
+  /* Reset layout edges */
+  .dashboard-wrapper { flex-direction: column !important; padding: 0 !important; }
+  .dashboard-sidebar { 
+    width: 100% !important; 
+    flex-direction: row !important; 
+    height: auto !important; 
+    padding: 0.5rem !important; 
+    border-radius: 0 !important; 
+    overflow-x: auto; 
+    justify-content: flex-start;
+  }
+  .dashboard-sidebar nav { flex-direction: row !important; flex: none !important; width: auto !important; padding: 0 1rem !important; }
+  .dashboard-content { border-radius: 0 !important; }
+  .dashboard-header { padding: 1rem !important; }
+  .dashboard-main-area { padding: 1rem !important; }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-custom {
+  animation: spin 1s linear infinite;
+}

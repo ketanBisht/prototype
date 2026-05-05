@@ -22,6 +22,7 @@ model Gym {
   members       Member[]
   plans         Plan[]
   announcements Announcement[]
+  trainers      Trainer[]
 }
 
 model Plan {
@@ -86,5 +87,17 @@ model Announcement {
   gym       Gym      @relation(fields: [gymId], references: [id])
   title     String
   body      String
+  createdAt DateTime @default(now())
+}
+
+model Trainer {
+  id        String   @id @default(cuid())
+  gymId     String
+  gym       Gym      @relation(fields: [gymId], references: [id])
+  name      String
+  phone     String
+  specialty String?
+  salary    Float?
+  isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
 }

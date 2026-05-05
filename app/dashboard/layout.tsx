@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 import {
   Dumbbell, LayoutDashboard, Users, CalendarCheck,
   CreditCard, Package, Settings, LogOut, Search, Bell, ChevronDown,
+  Contact, Send,
 } from "lucide-react";
 
 const NAV = [
@@ -14,6 +15,8 @@ const NAV = [
   { href: "/dashboard/attendance", icon: CalendarCheck,   label: "Attendance" },
   { href: "/dashboard/billing",    icon: CreditCard,      label: "Billing"    },
   { href: "/dashboard/plans",      icon: Package,         label: "Plans"      },
+  { href: "/dashboard/trainers",   icon: Contact,         label: "Trainers"   },
+  { href: "/dashboard/broadcasts", icon: Send,            label: "Broadcasts" },
   { href: "/dashboard/settings",   icon: Settings,        label: "Settings"   },
 ];
 
@@ -23,6 +26,8 @@ const PAGE_TITLES: Record<string, string> = {
   "/dashboard/attendance": "Attendance",
   "/dashboard/billing":    "Billing",
   "/dashboard/plans":      "Plans",
+  "/dashboard/trainers":   "Trainers",
+  "/dashboard/broadcasts": "Broadcasts",
   "/dashboard/settings":   "Settings",
 };
 
@@ -41,21 +46,21 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   return (
     /* Outer page: light-blue tinted background like the screenshot */
-    <div style={{
+    <div className="dashboard-wrapper" style={{
       minHeight: "100vh",
       background: "#E8EDF5",
       display: "flex",
       alignItems: "stretch",
-      padding: "1rem",
+      padding: "0",
       gap: "0",
       fontFamily: "var(--font-body)",
     }}>
 
       {/* ── SIDEBAR (narrow dark pill) ── */}
-      <aside style={{
+      <aside className="dashboard-sidebar" style={{
         width: 64,
         background: "#1C1C1E",
-        borderRadius: "18px 0 0 18px",
+        borderRadius: "0",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -116,14 +121,14 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       </aside>
 
       {/* ── CONTENT PANEL (white, rounded right) ── */}
-      <div style={{
+      <div className="dashboard-content" style={{
         flex: 1, background: "#fff",
-        borderRadius: "0 18px 18px 0",
+        borderRadius: "0",
         display: "flex", flexDirection: "column",
         overflow: "hidden", minWidth: 0,
       }}>
         {/* Header */}
-        <header style={{
+        <header className="dashboard-header" style={{
           display: "flex", alignItems: "center", justifyContent: "space-between",
           padding: "1.25rem 2rem", borderBottom: "1px solid #F0F0F0",
           flexShrink: 0,
@@ -160,7 +165,8 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.28, ease: "easeOut" }}
-          style={{ flex: 1, padding: "2rem", overflowY: "auto" }}
+          className="dashboard-main-area"
+          style={{ flex: 1, padding: "2rem", overflowY: "auto", overflowX: "hidden" }}
         >
           {children}
         </motion.main>

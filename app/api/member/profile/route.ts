@@ -15,33 +15,31 @@ export async function GET(req: NextRequest) {
       gym: {
         select: { name: true, phone: true, address: true, logoUrl: true },
       },
-      _count: {
-        select: { attendance: true },
-      },
+      payments: {
+        orderBy: { paidAt: "desc" },
+        take: 3,
+        select: { id: true, amount: true, paidAt: true, method: true },
+      }
     },
   });
 
   if (!member) return NextResponse.json({ error: "Not found" }, { status: 404 });
 
+  const trainers = await prisma.trainer.findMany({
+    where: { gymId: session.gymId, isActive: true },
+    select: { id: true, name: true, specialty: true },
+    orderBy: { createdAt: "desc" }
+  });
+
   const days = daysRemaining(member.endDate);
   const status = membershipStatus(member.endDate);
-
-  // This month attendance count
-  const now = new Date();
-  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
-  const thisMonthCount = await prisma.attendance.count({
-    where: {
-      memberId: session.memberId,
-      date: { gte: monthStart },
-    },
-  });
 
   return NextResponse.json({
     data: {
       ...member,
       daysRemaining: days,
       status,
-      thisMonthAttendance: thisMonthCount,
+      trainers,
     },
   });
 }

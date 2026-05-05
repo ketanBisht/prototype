@@ -89,7 +89,7 @@ export default function SettingsPage() {
       {/* Gym Info */}
       <SectionCard icon={<Building2 size={16} />} title="Gym Information">
         <form onSubmit={saveGym} style={{ display: "grid", gap: "1rem" }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+          <div className="grid-cols-2">
             <div className="form-group"><label className="label">Gym Name</label>
               <input className="input" value={gymForm.name ?? ""} onChange={e => setGymForm(f => ({ ...f, name: e.target.value }))} />
             </div>
@@ -103,7 +103,7 @@ export default function SettingsPage() {
           <div className="form-group"><label className="label">Address</label>
             <textarea className="input" rows={2} value={gymForm.address ?? ""} onChange={e => setGymForm(f => ({ ...f, address: e.target.value }))} style={{ resize: "vertical" }} />
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+          <div className="grid-cols-2">
             <div className="form-group"><label className="label">Phone</label>
               <input className="input" value={gymForm.phone ?? ""} onChange={e => setGymForm(f => ({ ...f, phone: e.target.value }))} />
             </div>
@@ -126,7 +126,7 @@ export default function SettingsPage() {
           <div className="form-group"><label className="label">Current Password</label>
             <input className="input" type="password" value={pwForm.currentPassword} onChange={e => setPwForm(f => ({ ...f, currentPassword: e.target.value }))} required />
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1rem" }}>
+          <div className="grid-cols-2">
             <div className="form-group"><label className="label">New Password</label>
               <input className="input" type="password" value={pwForm.newPassword} onChange={e => setPwForm(f => ({ ...f, newPassword: e.target.value }))} required />
             </div>

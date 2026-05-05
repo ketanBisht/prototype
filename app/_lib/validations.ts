@@ -87,3 +87,15 @@ export const createAnnouncementSchema = z.object({
   title: z.string().min(2).max(200),
   body: z.string().min(2).max(1000),
 });
+
+// ── Trainer ─────────────────────────────────────────────────────────────────
+
+export const createTrainerSchema = z.object({
+  name: z.string().min(2).max(100),
+  phone: z.string().min(10).max(15),
+  specialty: z.string().max(100).optional().or(z.literal("")),
+  salary: z.number().positive().optional(),
+  isActive: z.boolean().default(true),
+});
+
+export const updateTrainerSchema = createTrainerSchema.partial();
